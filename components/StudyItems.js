@@ -87,7 +87,6 @@ function StudyItem({ studyItem, onDelete, fetchStudyItems }) {
 	};
 
 	const updateText = async (name, input_text) => {
-		preventDefault();
 		try {
 			const { data, error } = await supabase
 				.from("StudyListComponents")
@@ -129,7 +128,7 @@ function StudyItem({ studyItem, onDelete, fetchStudyItems }) {
 							types="text"
 							placeholder="Create a Study Group"
 							minLength={1}
-							debounceTimeout={400}
+							debounceTimeout={500}
 							onChange={(e) => updateText("group_name", e.target.value)}
 							value={groupName}
 						/>
@@ -145,11 +144,12 @@ function StudyItem({ studyItem, onDelete, fetchStudyItems }) {
 								type="text"
 								placeholder="Enter a link here"
 								minLength={1}
-								debounceTimeout={400}
+								debounceTimeout={500}
 								onChange={(e) => updateText("group_link", e.target.value)}
 								value={groupLink}
 							/>
 							<DebounceInput
+								element="textarea"
 								name="group_desc"
 								type="text"
 								placeholder="Enter notes here"
