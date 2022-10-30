@@ -87,3 +87,9 @@ function updateInput(event) {
 		};
 	});
 }
+
+// backend is anything that isn't the client - client displays and does little processing, backend is where data is contained, processed and served out
+// 1. create database - postgres
+// 2. create backend - middleware
+// 3. create API that receives a request and figures out what to do with it
+// 4. create database functions that handle a api request, and return
