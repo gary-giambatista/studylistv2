@@ -1,7 +1,10 @@
 import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react"; //SupaBase user auth
 import * as React from "react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { DebounceInput } from "react-debounce-input";
 import styles from "../styles/Home.module.css";
+
+//var debounce = require("lodash.debounce");
 
 export default function StudyItems(props) {
 	//SupaBase user auth
@@ -12,7 +15,7 @@ export default function StudyItems(props) {
 
 	useEffect(() => {
 		fetchStudyItems();
-	});
+	}, []);
 
 	const fetchStudyItems = async () => {
 		let { data: study_items, error } = await supabase
@@ -47,6 +50,7 @@ export default function StudyItems(props) {
 				<StudyItem
 					key={studyItem.id}
 					studyItem={studyItem}
+					fetchStudyItems={fetchStudyItems}
 					onDelete={() => deleteStudyItem(studyItem.id)}
 				/>
 			))}
@@ -56,7 +60,7 @@ export default function StudyItems(props) {
 	);
 }
 
-function StudyItem({ studyItem, onDelete }) {
+function StudyItem({ studyItem, onDelete, fetchStudyItems }) {
 	const supabase = useSupabaseClient();
 	const user = useUser();
 
@@ -72,6 +76,7 @@ function StudyItem({ studyItem, onDelete }) {
 				.update({ is_open: !isOpen })
 				.eq("id", studyItem.id)
 				.single();
+			fetchStudyItems();
 			if (error) {
 				throw new Error(error);
 			}
@@ -82,6 +87,7 @@ function StudyItem({ studyItem, onDelete }) {
 	};
 
 	const updateText = async (name, input_text) => {
+		preventDefault();
 		try {
 			const { data, error } = await supabase
 				.from("StudyListComponents")
@@ -105,6 +111,8 @@ function StudyItem({ studyItem, onDelete }) {
 		}
 	};
 
+	//const debouncedChangeHandler = useMemo(() => debounce(updateText, 300), []);
+
 	return (
 		<div>
 			<div id={`studyGroupNumber${studyItem.id}`}>
@@ -112,11 +120,16 @@ function StudyItem({ studyItem, onDelete }) {
 					<button onClick={toggle}>
 						{studyItem.is_open ? "Close" : "Open"}
 					</button>
-					<form className={styles.studyGroupName}>
-						<input
+					<form
+						className={styles.studyGroupName}
+						onSubmit={(e) => e.preventDefault()}
+					>
+						<DebounceInput
 							name="group_name"
 							types="text"
 							placeholder="Create a Study Group"
+							minLength={1}
+							debounceTimeout={400}
 							onChange={(e) => updateText("group_name", e.target.value)}
 							value={groupName}
 						/>
@@ -125,19 +138,23 @@ function StudyItem({ studyItem, onDelete }) {
 
 				{studyItem.is_open ? (
 					<div className={styles.studyListItemBody}>
-						<form>
-							<input
+						<form onSubmit={(e) => e.preventDefault()}>
+							<DebounceInput
 								className={styles.studyListItemBody}
 								name="group_link"
 								type="text"
 								placeholder="Enter a link here"
+								minLength={1}
+								debounceTimeout={400}
 								onChange={(e) => updateText("group_link", e.target.value)}
 								value={groupLink}
 							/>
-							<textarea
+							<DebounceInput
 								name="group_desc"
 								type="text"
 								placeholder="Enter notes here"
+								minLength={1}
+								debounceTimeout={400}
 								onChange={(e) => updateText("group_desc", e.target.value)}
 								value={groupDesc}
 							/>
@@ -160,4 +177,4 @@ function StudyItem({ studyItem, onDelete }) {
 		</div>
 	);
 }
-//studyGroup > StudyItems >  studyItem
+//adding nested groups: studyGroup > StudyItems >  studyItem

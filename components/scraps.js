@@ -93,3 +93,17 @@ function updateInput(event) {
 // 2. create backend - middleware
 // 3. create API that receives a request and figures out what to do with it
 // 4. create database functions that handle a api request, and return
+
+export function useDebounce(value, delay) {
+	const [debouncedValue, setDebouncedValue] = React.useState(value);
+
+	useEffect(() => {
+		const timeoutId = setTimeout(() => {
+			setDebouncedValue(value);
+		}, delay);
+
+		return () => clearTimeout(timeoutId);
+	}, [value]);
+
+	return debouncedValue;
+}
