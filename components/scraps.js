@@ -107,3 +107,15 @@ export function useDebounce(value, delay) {
 
 	return debouncedValue;
 }
+
+//lodash for debouncing in react
+//var debounce = require("lodash.debounce");
+//const debouncedChangeHandler = useMemo(() => debounce(updateText, 300), []);
+
+//collapsible react package
+//import Collapsible from "react-collapsible";
+{
+	/* <Collapsible trigger="Start here">
+	<StudyItems />
+</Collapsible> */
+}

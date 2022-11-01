@@ -4,8 +4,6 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { DebounceInput } from "react-debounce-input";
 import styles from "../styles/Home.module.css";
 
-//var debounce = require("lodash.debounce");
-
 export default function StudyItems(props) {
 	//SupaBase user auth
 	const supabase = useSupabaseClient();
@@ -33,6 +31,8 @@ export default function StudyItems(props) {
 			.single();
 		if (error) setError(error.message);
 		else setStudyItems(study_items);
+		console.log(study_items);
+		//fetchStudyItems();
 	};
 
 	const deleteStudyItem = async (id) => {
@@ -54,13 +54,14 @@ export default function StudyItems(props) {
 					onDelete={() => deleteStudyItem(studyItem.id)}
 				/>
 			))}
-			<hr></hr>
-			<button onClick={addStudyItem}>Create Study Item</button>
+			<button className={styles.addButton} onClick={addStudyItem}>
+				Create Study Item
+			</button>
 		</div>
 	);
 }
 
-function StudyItem({ studyItem, onDelete, fetchStudyItems }) {
+function StudyItem({ studyItem, onDelete, fetchStudyItems, toggleModule }) {
 	const supabase = useSupabaseClient();
 	const user = useUser();
 
@@ -110,23 +111,37 @@ function StudyItem({ studyItem, onDelete, fetchStudyItems }) {
 		}
 	};
 
-	//const debouncedChangeHandler = useMemo(() => debounce(updateText, 300), []);
+	function openLink(url) {
+		window.open(url);
+	}
+	const [isShown, setIsShown] = React.useState(false);
+	function toggleModule() {
+		setIsShown((prevShown) => !prevShown);
+	}
 
 	return (
-		<div>
-			<div id={`studyGroupNumber${studyItem.id}`}>
-				<div className={styles.studyListHeaderContainer}>
-					<button onClick={toggle}>
+		<body className={styles.studyBody}>
+			<div className={styles.studyItems} id={`studyGroupNumber${studyItem.id}`}>
+				<div className={styles.studyItemTopContainer}>
+					<button
+						onClick={toggle}
+						className={
+							studyItem.is_open
+								? styles.toggleCloseButton
+								: styles.toggleOpenButton
+						}
+					>
 						{studyItem.is_open ? "Close" : "Open"}
 					</button>
 					<form
-						className={styles.studyGroupName}
+						//className={styles.studyGroupName}
 						onSubmit={(e) => e.preventDefault()}
 					>
 						<DebounceInput
+							className={styles.studyGroupName}
 							name="group_name"
 							types="text"
-							placeholder="Create a Study Group"
+							placeholder="Create a Study Item"
 							minLength={1}
 							debounceTimeout={500}
 							onChange={(e) => updateText("group_name", e.target.value)}
@@ -136,19 +151,31 @@ function StudyItem({ studyItem, onDelete, fetchStudyItems }) {
 				</div>
 
 				{studyItem.is_open ? (
-					<div className={styles.studyListItemBody}>
-						<form onSubmit={(e) => e.preventDefault()}>
+					<div>
+						<form
+							className={styles.studyItemBody}
+							onSubmit={(e) => e.preventDefault()}
+						>
+							<div className={styles.topInputAndButton}>
+								<DebounceInput
+									className={styles.groupLink}
+									name="group_link"
+									type="text"
+									placeholder="Enter a link here"
+									minLength={1}
+									debounceTimeout={500}
+									onChange={(e) => updateText("group_link", e.target.value)}
+									value={groupLink}
+								/>
+								<button
+									className={styles.urlOpenButton}
+									onClick={() => openLink(groupLink)}
+								>
+									Open link
+								</button>
+							</div>
 							<DebounceInput
-								className={styles.studyListItemBody}
-								name="group_link"
-								type="text"
-								placeholder="Enter a link here"
-								minLength={1}
-								debounceTimeout={500}
-								onChange={(e) => updateText("group_link", e.target.value)}
-								value={groupLink}
-							/>
-							<DebounceInput
+								className={styles.groupDesc}
 								element="textarea"
 								name="group_desc"
 								type="text"
@@ -160,20 +187,55 @@ function StudyItem({ studyItem, onDelete, fetchStudyItems }) {
 							/>
 						</form>
 						<button
+							className={styles.removeButton}
 							onClick={(e) => {
 								e.preventDefault();
 								e.stopPropagation();
-								onDelete();
+								toggleModule();
 							}}
 						>
 							{" "}
 							Remove Item{" "}
 						</button>
+						<ConfirmDelete
+							className={styles.testing}
+							isShown={isShown}
+							setIsShown={setIsShown}
+							toggleModule={toggleModule}
+							onDelete={onDelete}
+						/>
 					</div>
-				) : (
-					<div></div>
-				)}
+				) : null}
 			</div>
+			<hr className={styles.lineBreak}></hr>
+		</body>
+	);
+}
+
+export function ConfirmDelete({ onDelete, isShown, toggleModule }) {
+	return (
+		<div>
+			{isShown ? (
+				<div className={styles.moduleContainer}>
+					<p className={styles.moduleText}> Are you sure? </p>
+					<div className={styles.moduleButtons}>
+						<button
+							onClick={(e) => {
+								e.preventDefault();
+								e.stopPropagation();
+								onDelete();
+								toggleModule();
+							}}
+							className={styles.confirmButton}
+						>
+							Delete
+						</button>
+						<button onClick={toggleModule} className={styles.rejectButton}>
+							Cancel
+						</button>
+					</div>
+				</div>
+			) : null}
 		</div>
 	);
 }
