@@ -11,6 +11,7 @@
 }
 .studyBody {
 	border-left: 1px solid #ddd;
+	margin: 30px;
 }
 .studyitems {
 	display: flex;
@@ -96,20 +97,41 @@
 	font-size: 14px;
 	padding: 3px 7px 3px 7px;
 	border-width: 1.5px;
-	border-radius: 6px;
-	cursor: not-allowed;
+	border-radius: 5px;
+	cursor: pointer;
 	display: flex;
 	margin-left: auto;
 }
 .removeButton:hover {
 	background-color: #ff3131;
 }
+.confirmButton {
+	padding: 5px;
+	cursor: pointer;
+	margin-right: 5px;
+	border-radius: 5px;
+	border-width: 0.5px;
+}
+.confirmButton:hover {
+	background-color: #ff3131;
+}
+.rejectButton {
+	padding: 5px;
+	cursor: pointer;
+	border-radius: 5px;
+	border-width: 0.5px;
+}
+.rejectButton:hover {
+	background-color: rgb(175, 255, 159);
+}
+
 .lineBreak {
 	border-bottom: 1px solid #ddd;
 }
 
 .addButton {
-	margin-bottom: -2px;
+	padding: 10px;
+	margin-left: 30px;
 	font-size: 18px;
 }
 .moduleText {

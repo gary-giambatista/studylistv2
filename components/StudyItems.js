@@ -2,7 +2,7 @@ import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react"; //Sup
 import * as React from "react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { DebounceInput } from "react-debounce-input";
-import styles from "../styles/Home.module.css";
+import styles from "../styles/StudyItems.module.css";
 
 export default function StudyItems(props) {
 	//SupaBase user auth
@@ -22,17 +22,18 @@ export default function StudyItems(props) {
 			.order("id", true);
 		if (error) console.log("error", error);
 		else setStudyItems(study_items);
+		//console.log(JSON.stringify(study_items));
 	};
 
 	const addStudyItem = async () => {
 		let { data: study_items, error } = await supabase
 			.from("StudyListComponents")
-			.insert({ user_id: user.id })
+			.insert([{ user_id: user.id }])
+			.select()
 			.single();
 		if (error) setError(error.message);
-		else setStudyItems(study_items);
-		console.log(study_items);
-		//fetchStudyItems();
+		else console.log(JSON.stringify(study_items));
+		setStudyItems([...studyItems, study_items]);
 	};
 
 	const deleteStudyItem = async (id) => {
@@ -110,17 +111,19 @@ function StudyItem({ studyItem, onDelete, fetchStudyItems, toggleModule }) {
 			console.log("error", error);
 		}
 	};
-
+	//opens groupLink in a new tab
 	function openLink(url) {
 		window.open(url);
 	}
+	//state for confirmation of deleting an item
 	const [isShown, setIsShown] = React.useState(false);
+	//controls visbility of the delete confirmation
 	function toggleModule() {
 		setIsShown((prevShown) => !prevShown);
 	}
 
 	return (
-		<body className={styles.studyBody}>
+		<div className={styles.studyBody}>
 			<div className={styles.studyItems} id={`studyGroupNumber${studyItem.id}`}>
 				<div className={styles.studyItemTopContainer}>
 					<button
@@ -133,10 +136,7 @@ function StudyItem({ studyItem, onDelete, fetchStudyItems, toggleModule }) {
 					>
 						{studyItem.is_open ? "Close" : "Open"}
 					</button>
-					<form
-						//className={styles.studyGroupName}
-						onSubmit={(e) => e.preventDefault()}
-					>
+					<form onSubmit={(e) => e.preventDefault()}>
 						<DebounceInput
 							className={styles.studyGroupName}
 							name="group_name"
@@ -208,7 +208,7 @@ function StudyItem({ studyItem, onDelete, fetchStudyItems, toggleModule }) {
 				) : null}
 			</div>
 			<hr className={styles.lineBreak}></hr>
-		</body>
+		</div>
 	);
 }
 

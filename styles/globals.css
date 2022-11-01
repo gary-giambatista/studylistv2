@@ -8,6 +8,7 @@ nav {
 	margin: -20px;
 	margin-bottom: 0px;
 }
-body {
-	margin: 20px;
+.studyBody {
+	margin: 50px;
+	background-color: yellow;
 }
