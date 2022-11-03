@@ -3,6 +3,7 @@ import * as React from "react";
 import { DebounceInput } from "react-debounce-input";
 import styles from "../styles/StudyItems.module.css";
 //import ConfirmDelete from "./ConfirmDelete.js";
+import ConfirmDelete from "./ConfirmDelete";
 import StudyItems from "./StudyItems.js";
 
 export default function StudyGroup({ studyGroups, setStudyGroups }) {
@@ -22,7 +23,6 @@ export default function StudyGroup({ studyGroups, setStudyGroups }) {
 	// 	else setStudyGroups(study_groups);
 	// };
 	const addStudyGroup = async () => {
-		console.log(JSON.stringify(studyGroups.is_open));
 		let { data: study_group, error } = await supabase
 			.from("StudyGroups")
 			.insert({ user_id: user.id })
@@ -35,6 +35,8 @@ export default function StudyGroup({ studyGroups, setStudyGroups }) {
 
 	const deleteStudyGroup = async (id) => {
 		try {
+			await supabase.from("StudyListComponents").delete().eq("group_id", id);
+
 			await supabase.from("StudyGroups").delete().eq("id", id);
 			setStudyGroups(studyGroups.filter((studyGroup) => studyGroup.id != id));
 		} catch (error) {
@@ -43,25 +45,21 @@ export default function StudyGroup({ studyGroups, setStudyGroups }) {
 	};
 
 	//UpdateText StudyGroup
-	const updateText = async (name, input_text) => {
+	const updateText = async (studyGroup, input_text) => {
 		try {
 			const { data, error } = await supabase
 				.from("StudyGroups")
-				.update({ [name]: input_text })
-				.eq("id", studyGroups.id)
-				.single();
+				.update({ group_name: input_text })
+				.eq("id", studyGroup.id);
+
+			let { data: study_groups, error2 } = await supabase
+				.from("StudyGroups")
+				.select("*")
+				.order("id", true);
 			if (error) {
 				throw new Error(error);
 			}
-			if (name === "item_name") {
-				setItemName(input_text);
-			} else if (name === "group_link") {
-				setGroupLink(input_text);
-			} else if (name === "group_desc") {
-				setGroupDesc(input_text);
-			} else {
-				throw "Error. Update text name does not match any known names.";
-			}
+			setStudyGroups(study_groups);
 		} catch (error) {
 			console.log("error", error);
 		}
@@ -86,15 +84,18 @@ export default function StudyGroup({ studyGroups, setStudyGroups }) {
 				}
 				return obj;
 			});
-
 			setStudyGroups(newStudyGroups);
-			console.log(studyGroups);
-			// setStudyGroups((prevState) => [...prevState, data]);
 		} catch (error) {
 			console.log("error", error);
 		}
 	};
-	console.log("My thing", studyGroups);
+	const [isShown, setIsShown] = React.useState(false);
+
+	//controls visbility of the delete confirmation
+	function toggleModule() {
+		setIsShown((prevShown) => !prevShown);
+	}
+
 	return (
 		<div>
 			{studyGroups?.map((studyGroup) => (
@@ -108,15 +109,17 @@ export default function StudyGroup({ studyGroups, setStudyGroups }) {
 							placeholder="Create a Study Group"
 							minLength={1}
 							debounceTimeout={500}
-							onChange={(e) => updateText("group_name", e.target.value)}
+							onChange={(e) => updateText(studyGroup, e.target.value)}
 							value={studyGroup.group_name}
 						/>
 					</form>
 					{studyGroup.is_open ? (
 						<div>
-							<button onClick={() => deleteStudyGroup(studyGroup.id)}>
-								Delete Group
-							</button>
+							<ConfirmDelete
+								className={styles.testing}
+								buttonText={"Delete Group"}
+								onDelete={() => deleteStudyGroup(studyGroup.id)}
+							/>
 							<StudyItems
 								key={studyGroup.created_at}
 								studyGroupId={studyGroup.id}

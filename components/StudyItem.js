@@ -64,11 +64,6 @@ export default function StudyItem({
 		window.open(url);
 	}
 
-	//controls visbility of the delete confirmation
-	function toggleModule() {
-		setIsShown((prevShown) => !prevShown);
-	}
-
 	return (
 		<div className={styles.studyBody}>
 			<div className={styles.studyItems} id={`studyGroupNumber${studyItem.id}`}>
@@ -131,22 +126,9 @@ export default function StudyItem({
 								value={groupDesc}
 							/>
 						</form>
-						<button
-							className={styles.removeButton}
-							onClick={(e) => {
-								e.preventDefault();
-								e.stopPropagation();
-								toggleModule();
-							}}
-						>
-							{" "}
-							Remove Item{" "}
-						</button>
 						<ConfirmDelete
 							className={styles.testing}
-							isShown={isShown}
-							setIsShown={setIsShown}
-							toggleModule={toggleModule}
+							buttonText={"Remove Item"}
 							onDelete={onDelete}
 						/>
 					</div>
