@@ -6,10 +6,11 @@ import * as React from "react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { fileURLToPath } from "url";
+import Fetcher from "../components/Fetcher.js";
 import Navbar from "../Components/Navbar";
-import StudyItems from "../components/StudyItems.js";
+import StudyGroup from "../components/StudyGroup.js";
 
-export default function Home({ StudyList }, props) {
+export default function Home() {
 	//supabase auth imports
 	const session = useSession();
 	const supabase = useSupabaseClient();
@@ -28,7 +29,7 @@ export default function Home({ StudyList }, props) {
 						<Navbar />
 					</header>
 					<div>
-						<StudyItems />
+						<Fetcher />
 					</div>
 				</div>
 			)}

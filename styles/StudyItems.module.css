@@ -59,6 +59,17 @@
 	border-bottom: 1px solid #ddd;
 }
 
+.studyItemName {
+	padding-left: 5px;
+	height: 32px;
+	background: transparent;
+	border: none;
+	width: 500px;
+	fill: none;
+	font-size: 16px;
+	border-bottom: 1px solid #ddd;
+}
+
 .groupLink {
 	padding-left: 5px;
 	height: 32px;
@@ -144,4 +155,5 @@
 	display: flex;
 	justify-content: flex-end;
 	justify-items: flex-end;
+	box-shadow: 0px 1px;
 }
