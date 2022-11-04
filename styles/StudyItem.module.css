@@ -19,6 +19,7 @@
 	border-width: 3px;
 	border-radius: 8px;
 	color: black;
+	transition: all 0.3s ease 0s;
 }
 .toggleOpenButton:hover {
 	background-color: #1da1f2;
@@ -32,6 +33,7 @@
 	background-color: #22303c;
 	color: #ffffff;
 	border-color: #192734;
+	transition: all 0.3s ease 0s;
 }
 .toggleCloseButton:hover {
 	background-color: #1da1f2;

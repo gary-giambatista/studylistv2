@@ -3,7 +3,7 @@ import { Auth, ThemeSupa } from "@supabase/auth-ui-react";
 import Head from "next/head";
 import Image from "next/image";
 import * as React from "react";
-import styles from "../styles/StudyGroup.module.css";
+import styles from "../styles/Login.module.css";
 
 import Fetcher from "../components/Fetcher.js";
 import Navbar from "../Components/Navbar";
@@ -14,18 +14,23 @@ export default function Home() {
 	const supabase = useSupabaseClient();
 
 	return (
-		<div className="container" style={{ padding: "50px 0 100px 0" }}>
+		<div
+			className={styles.allRenderedComps}
+			//style={{ padding: "50px 0 100px 0" }}
+		>
+			<header>
+				<Navbar />
+			</header>
 			{!session ? (
-				<Auth
-					supabaseClient={supabase}
-					appearance={{ theme: ThemeSupa }}
-					theme="dark"
-				/>
+				<div className={styles.loginContainer}>
+					<Auth
+						supabaseClient={supabase}
+						appearance={{ theme: ThemeSupa }}
+						theme="dark"
+					/>
+				</div>
 			) : (
-				<div className={styles.allRenderedComps} session={session}>
-					<header>
-						<Navbar />
-					</header>
+				<div session={session}>
 					<div>
 						<Fetcher />
 					</div>

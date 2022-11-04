@@ -1,11 +1,3 @@
-.allRenderedComps {
-}
-
-.studyGroupContainerOpen {
-}
-.studyGroupContainerClosed {
-}
-
 .groupButtonAndInput {
 	display: flex;
 	margin-left: 30px;
@@ -20,6 +12,7 @@
 	border-width: 3px;
 	color: black;
 	border-color: #192734;
+	transition: all 0.3s ease 0s;
 }
 .toggleOpenButton:hover {
 	background-color: #8899a6;
@@ -33,6 +26,7 @@
 	background-color: #22303c;
 	color: #ffffff;
 	border-color: #192734;
+	transition: all 0.3s ease 0s;
 }
 .toggleCloseButton:hover {
 	background-color: #1da1f2;
@@ -63,6 +57,7 @@
 	border-width: 3px;
 	color: black;
 	border-radius: 8px;
+	transition: all 0.3s ease 0s;
 }
 
 .addButton:hover {

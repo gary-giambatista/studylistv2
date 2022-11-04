@@ -8,6 +8,7 @@
 	border-width: 3px;
 	color: black;
 	border-radius: 8px;
+	transition: all 0.3s ease 0s;
 }
 
 .addButton:hover {

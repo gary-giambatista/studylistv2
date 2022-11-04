@@ -1,11 +1,37 @@
 .navbar {
-	font-size: 21px;
+	font-size: 18px;
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
-
+	padding: 18px 50px 5px 50px;
 	height: 50px;
-	background: #8899a6;
+	background: #192734;
+	color: #ffffff;
+	box-shadow: black 0px 1px 3px;
+}
+.loggedInUser {
+	list-style: none;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 30px;
+}
+.userName {
+}
 
-	border-bottom: 1px solid #ddd;
+.signOut {
+	cursor: pointer;
+	padding: 5px 20px 5px 20px;
+	font-size: 18px;
+	color: #ffffff !important;
+	background-color: #22303c;
+	border-color: #22303c;
+	border-width: 3px;
+	color: black;
+	border-radius: 8px;
+	transition: all 0.3s ease 0s;
+}
+
+.signOut:hover {
+	background-color: #1da1f2;
 }
