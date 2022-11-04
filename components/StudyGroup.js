@@ -1,8 +1,7 @@
 import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react"; //SupaBase user auth
 import * as React from "react";
 import { DebounceInput } from "react-debounce-input";
-import styles from "../styles/StudyItems.module.css";
-//import ConfirmDelete from "./ConfirmDelete.js";
+import styles from "../styles/StudyGroup.module.css";
 import ConfirmDelete from "./ConfirmDelete";
 import StudyItems from "./StudyItems.js";
 
@@ -11,17 +10,6 @@ export default function StudyGroup({ studyGroups, setStudyGroups }) {
 	const supabase = useSupabaseClient();
 	const user = useUser();
 
-	//state for studyGroups
-	//const [studyGroups, setStudyGroups] = React.useState(fetchStudyGroups, []);
-
-	// const fetchStudyGroups = async () => {
-	// 	let { data: study_groups, error } = await supabase
-	// 		.from("StudyGroups")
-	// 		.select("*")
-	// 		.order("id", true);
-	// 	if (error) console.log("error", error);
-	// 	else setStudyGroups(study_groups);
-	// };
 	const addStudyGroup = async () => {
 		let { data: study_group, error } = await supabase
 			.from("StudyGroups")
@@ -65,7 +53,6 @@ export default function StudyGroup({ studyGroups, setStudyGroups }) {
 		}
 	};
 
-	//const [isOpen, setIsOpen] = React.useState(studyGroups.is_open);
 	//toggle open StudyGroup
 	const toggle = async (studyGroup) => {
 		try {
@@ -89,30 +76,42 @@ export default function StudyGroup({ studyGroups, setStudyGroups }) {
 			console.log("error", error);
 		}
 	};
-	const [isShown, setIsShown] = React.useState(false);
-
-	//controls visbility of the delete confirmation
-	function toggleModule() {
-		setIsShown((prevShown) => !prevShown);
-	}
 
 	return (
 		<div>
 			{studyGroups?.map((studyGroup) => (
-				<div key={studyGroup.created_at}>
-					<button onClick={() => toggle(studyGroup)}>Open Group</button>
-					<form onSubmit={(e) => e.preventDefault()}>
-						<DebounceInput
-							className={styles.studyItemName}
-							name="group_name"
-							types="text"
-							placeholder="Create a Study Group"
-							minLength={1}
-							debounceTimeout={500}
-							onChange={(e) => updateText(studyGroup, e.target.value)}
-							value={studyGroup.group_name}
-						/>
-					</form>
+				<div
+					className={
+						studyGroup.is_open
+							? styles.studyGroupContainerOpen
+							: styles.studyGroupContainerClosed
+					}
+					key={studyGroup.created_at}
+				>
+					<div className={styles.groupButtonAndInput}>
+						<button
+							className={
+								studyGroup.is_open
+									? styles.toggleCloseButton
+									: styles.toggleOpenButton
+							}
+							onClick={() => toggle(studyGroup)}
+						>
+							{studyGroup.is_open ? "Close Group" : "Open Group"}
+						</button>
+						<form onSubmit={(e) => e.preventDefault()}>
+							<DebounceInput
+								className={styles.groupName}
+								name="group_name"
+								types="text"
+								placeholder="Study Group Name"
+								minLength={1}
+								debounceTimeout={500}
+								onChange={(e) => updateText(studyGroup, e.target.value)}
+								value={studyGroup.group_name}
+							/>
+						</form>
+					</div>
 					{studyGroup.is_open ? (
 						<div>
 							<ConfirmDelete
@@ -129,6 +128,7 @@ export default function StudyGroup({ studyGroups, setStudyGroups }) {
 					) : null}
 				</div>
 			))}
+			<hr className={styles.addGroupMarginHR}></hr>
 			<button className={styles.addButton} onClick={addStudyGroup}>
 				Create Study Group
 			</button>

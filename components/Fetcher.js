@@ -1,5 +1,6 @@
 import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react"; //SupaBase user auth
 import * as React from "react";
+import styles from "../styles/StudyGroup.module.css";
 import StudyGroup from "./StudyGroup.js";
 
 export default function Fetcher() {
@@ -11,7 +12,6 @@ export default function Fetcher() {
 	React.useEffect(() => {
 		fetchStudyGroups();
 	}, []);
-	//.select("group_id, StudyGroups(*)")
 
 	const fetchStudyGroups = async () => {
 		let { data: study_groups, error } = await supabase

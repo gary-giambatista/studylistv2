@@ -1,0 +1,70 @@
+.allRenderedComps {
+}
+
+.studyGroupContainerOpen {
+}
+.studyGroupContainerClosed {
+}
+
+.groupButtonAndInput {
+	display: flex;
+	margin-left: 30px;
+	margin-top: 30px;
+}
+.toggleOpenButton {
+	margin-right: 10px;
+	font-size: 16px;
+	width: 150px;
+	background-color: #1da1f2;
+	border-radius: 8px;
+	border-width: 3px;
+	color: black;
+	border-color: #192734;
+}
+.toggleOpenButton:hover {
+	background-color: #8899a6;
+	border-color: #192734;
+}
+.toggleCloseButton {
+	margin-right: 10px;
+	font-size: 16px;
+	width: 150px;
+	border-radius: 8px;
+	background-color: #22303c;
+	color: #ffffff;
+	border-color: #192734;
+}
+.toggleCloseButton:hover {
+	background-color: #1da1f2;
+	border-color: #8899a6;
+}
+
+.groupName {
+	color: #ffffff;
+	padding-left: 5px;
+	height: 32px;
+	background: transparent;
+	border: none;
+	width: 500px;
+	fill: none;
+	font-size: 16px;
+	border-bottom: 1px solid #8899a6;
+}
+.addGroupMarginHR {
+	margin: 30px;
+}
+.addButton {
+	padding: 10px;
+	margin-left: 30px;
+	font-size: 18px;
+	color: #ffffff !important;
+	background-color: #22303c;
+	border-color: #22303c;
+	border-width: 3px;
+	color: black;
+	border-radius: 8px;
+}
+
+.addButton:hover {
+	background-color: #1da1f2;
+}

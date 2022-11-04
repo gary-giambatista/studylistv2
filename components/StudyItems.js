@@ -1,10 +1,9 @@
 import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react"; //SupaBase user auth
 import * as React from "react";
-import { DebounceInput } from "react-debounce-input";
 import styles from "../styles/StudyItems.module.css";
 import StudyItem from "./StudyItem";
 
-export default function StudyItems({ onDeleteGroup, studyGroupId }) {
+export default function StudyItems({ studyGroupId }) {
 	const supabase = useSupabaseClient();
 	const user = useUser();
 
@@ -23,9 +22,6 @@ export default function StudyItems({ onDeleteGroup, studyGroupId }) {
 		if (error) console.log("error", error);
 		else setStudyItems(study_item);
 	};
-
-	// const [isOpen, setIsOpen] = React.useState(studyItems.is_open_group);
-	// const [groupName, setGroupName] = React.useState(studyItems.group_name);
 
 	const addStudyItem = async (studyGroupId) => {
 		console.log(studyGroupId);

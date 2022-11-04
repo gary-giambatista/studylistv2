@@ -1,0 +1,95 @@
+.studyBody {
+	/* border-left: 1px solid #ddd; */
+	margin: 10px 100px 30px 100px;
+}
+.studyitems {
+	display: flex;
+	justify-content: center;
+}
+
+.studyItemTopContainer {
+	display: flex;
+}
+.toggleOpenButton {
+	margin-right: 10px;
+	font-size: 16px;
+	width: 65px;
+	background-color: #8899a6;
+	border-color: #22303c;
+	border-width: 3px;
+	border-radius: 8px;
+	color: black;
+}
+.toggleOpenButton:hover {
+	background-color: #1da1f2;
+	border-color: #8899a6;
+}
+.toggleCloseButton {
+	margin-right: 10px;
+	font-size: 16px;
+	width: 65px;
+	border-radius: 8px;
+	background-color: #22303c;
+	color: #ffffff;
+	border-color: #192734;
+}
+.toggleCloseButton:hover {
+	background-color: #1da1f2;
+	border-color: #8899a6;
+}
+.studyItemBody {
+	font-size: 16px;
+	margin: 15px;
+	margin-left: 120px;
+
+	display: flex;
+	flex-direction: column;
+}
+
+.studyItemName {
+	color: #ffffff;
+	padding-left: 5px;
+	height: 32px;
+	background: transparent;
+	border: none;
+	width: 500px;
+	fill: none;
+	font-size: 16px;
+	border-bottom: 1px solid #8899a6;
+}
+
+.groupLink {
+	color: #ffffff;
+	padding-left: 5px;
+	height: 32px;
+	font-size: 16px;
+	margin-bottom: 20px;
+	background: transparent;
+	border: none;
+	width: 800px;
+	fill: none;
+	border-bottom: 1px solid #8899a6;
+}
+.topInputAndButton {
+	display: flex;
+}
+.urlOpenButton {
+	height: 35px;
+	width: 75px;
+	color: #8899a6;
+	background-color: transparent;
+	border: none;
+	border-bottom: 1px solid #8899a6;
+	cursor: pointer;
+}
+
+.groupDesc {
+	color: #ffffff;
+	padding-left: 5px;
+	font-size: 16px;
+	border-bottom: 1px solid #8899a6;
+	background: transparent;
+	border-top: transparent;
+	border-left: transparent;
+	border-right: transparent;
+}

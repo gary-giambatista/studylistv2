@@ -1,16 +1,6 @@
-import { SupabaseAuthClient } from "@supabase/supabase-js/dist/module/lib/SupabaseAuthClient";
 import React from "react";
 
 export default function login() {
-	//youtube login way v1
-	// async function handleSubmit(event) {
-	// 	event.preventDefault();
-
-	// 	const email = event.target.email.value;
-	// 	const password = event.target.password.value;
-
-	// 	await supabase.auth.signIn({ email, password });
-	// }
 	async function signInWithEmail(event) {
 		event.preventDefault();
 		const email = event.target.email.value;

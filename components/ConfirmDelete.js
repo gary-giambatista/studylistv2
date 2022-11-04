@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../styles/StudyItems.module.css";
+import styles from "../styles/ConfirmDelete.module.css";
 
 export default function ConfirmDelete({ onDelete, buttonText }) {
 	const [isShown, setIsShown] = React.useState(false);

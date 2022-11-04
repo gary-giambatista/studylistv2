@@ -3,12 +3,10 @@ import { Auth, ThemeSupa } from "@supabase/auth-ui-react";
 import Head from "next/head";
 import Image from "next/image";
 import * as React from "react";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import styles from "../styles/StudyGroup.module.css";
 
-import { fileURLToPath } from "url";
 import Fetcher from "../components/Fetcher.js";
 import Navbar from "../Components/Navbar";
-import StudyGroup from "../components/StudyGroup.js";
 
 export default function Home() {
 	//supabase auth imports
@@ -24,7 +22,7 @@ export default function Home() {
 					theme="dark"
 				/>
 			) : (
-				<div session={session}>
+				<div className={styles.allRenderedComps} session={session}>
 					<header>
 						<Navbar />
 					</header>

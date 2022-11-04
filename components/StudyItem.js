@@ -1,23 +1,16 @@
-import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react"; //SupaBase user auth
+import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react";
 import * as React from "react";
 import { DebounceInput } from "react-debounce-input";
-import styles from "../styles/StudyItems.module.css";
+import styles from "../styles/StudyItem.module.css";
 import ConfirmDelete from "./ConfirmDelete.js";
 
-export default function StudyItem({
-	studyItem,
-	onDelete,
-	fetchStudyItems,
-	toggleModule,
-}) {
+export default function StudyItem({ studyItem, onDelete }) {
 	const supabase = useSupabaseClient();
 
 	const [isOpen, setIsOpen] = React.useState(studyItem.is_open);
 	const [itemName, setItemName] = React.useState(studyItem.item_name);
 	const [groupLink, setGroupLink] = React.useState(studyItem.group_link);
 	const [groupDesc, setGroupDesc] = React.useState(studyItem.group_desc);
-	//state for confirmation of deleting an item
-	const [isShown, setIsShown] = React.useState(false);
 
 	const toggle = async () => {
 		try {
@@ -81,7 +74,7 @@ export default function StudyItem({
 							className={styles.studyItemName}
 							name="item_name"
 							types="text"
-							placeholder="Create a Study Item"
+							placeholder="Study Item Name"
 							minLength={1}
 							debounceTimeout={500}
 							onChange={(e) => updateText("item_name", e.target.value)}
@@ -101,7 +94,7 @@ export default function StudyItem({
 									className={styles.groupLink}
 									name="group_link"
 									type="text"
-									placeholder="Enter a link here"
+									placeholder="Paste a link here"
 									minLength={1}
 									debounceTimeout={500}
 									onChange={(e) => updateText("group_link", e.target.value)}
@@ -134,7 +127,6 @@ export default function StudyItem({
 					</div>
 				) : null}
 			</div>
-			<hr className={styles.lineBreak}></hr>
 		</div>
 	);
 }
