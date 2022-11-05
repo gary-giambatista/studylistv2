@@ -1,4 +1,4 @@
-import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react"; //SupaBase user auth
+import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react";
 import * as React from "react";
 import { DebounceInput } from "react-debounce-input";
 import styles from "../styles/StudyGroup.module.css";

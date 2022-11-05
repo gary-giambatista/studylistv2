@@ -1,0 +1,24 @@
+.footerContainer {
+	padding: 10px;
+	color: rgb(100, 100, 100);
+	font-size: 14px;
+	display: flex;
+	justify-content: space-around;
+	position: absolute;
+	bottom: 0;
+	width: 90%;
+}
+
+.bottomLine {
+	width: 60%;
+}
+
+.footerText {
+	border-top: 2px solid #192734;
+	margin-top: 50px;
+	padding: 20px 83px 0px 80px;
+	list-style: none;
+	display: flex;
+	flex-direction: row;
+	gap: 30px;
+}

@@ -3,6 +3,7 @@ import { Auth, ThemeSupa } from "@supabase/auth-ui-react";
 import Head from "next/head";
 import Image from "next/image";
 import * as React from "react";
+import Footer from "../components/Footer.js";
 import styles from "../styles/Login.module.css";
 
 import Fetcher from "../components/Fetcher.js";
@@ -36,6 +37,7 @@ export default function Home() {
 					</div>
 				</div>
 			)}
+			<Footer />
 		</div>
 	);
 }
