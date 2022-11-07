@@ -4,9 +4,10 @@
 	font-size: 14px;
 	display: flex;
 	justify-content: space-around;
-	position: absolute;
+	align-self: flex-end;
+	position: relative;
 	bottom: 0;
-	width: 90%;
+	width: 98.9%;
 }
 
 .bottomLine {

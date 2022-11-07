@@ -1,6 +1,7 @@
 import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react";
 import * as React from "react";
 import { DebounceInput } from "react-debounce-input";
+// import { trackPromise, usePromiseTracker } from "react-promise-tracker";
 import styles from "../styles/StudyGroup.module.css";
 import ConfirmDelete from "./ConfirmDelete";
 import StudyItems from "./StudyItems.js";
@@ -112,6 +113,7 @@ export default function StudyGroup({ studyGroups, setStudyGroups }) {
 							/>
 						</form>
 					</div>
+
 					{studyGroup.is_open ? (
 						<div>
 							<ConfirmDelete

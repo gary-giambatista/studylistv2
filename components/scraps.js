@@ -119,3 +119,20 @@ export function useDebounce(value, delay) {
 	<StudyItems />
 </Collapsible> */
 }
+
+//chevrons
+// import Image from "next/image";
+// import ChevronDown from "../public/chevron-down.svg";
+// import Chevron from "../public/chevron.svg";
+// {studyGroup.is_open ? (
+// 	<Image src={Chevron} alt="Open" />
+// ) : (
+// 	<Image src={ChevronDown} alt="Close" />
+// )}
+
+//using a spinner on loading with boolean state
+// 2 methods
+import ClipLoader from "react-spinners/ClipLoader";
+const [spinOpen, setSpinOpen] = React.useState(false);
+<ClipLoader loading={spinOpen} size={35} />
+{spinOpen ? <ClipLoader> : <div>false</div>}

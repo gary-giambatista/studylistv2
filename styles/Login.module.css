@@ -3,6 +3,32 @@
 } */
 
 .loginContainer {
-	justify-content: center;
-	max-width: 500px;
+	color: #ffffff;
+	margin: 30px;
+	max-width: 98.9%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.auth {
+	margin-top: 10px;
+	width: 500px;
+}
+.title {
+	border-bottom: 3px solid #192734;
+	padding: 0px 65px 22px 65px;
+}
+.topExplaination {
+	margin-bottom: 30px;
+}
+.explaination {
+	border-bottom: 3px solid #192734;
+	padding: 0px 65px 22px 65px;
+	margin-top: 50px;
+}
+.picture {
+	border: 4px solid #ffffff !important;
+	box-shadow: black 0px 5px 5px;
+	border-radius: 5px;
 }

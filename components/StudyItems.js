@@ -53,12 +53,14 @@ export default function StudyItems({ studyGroupId }) {
 					onDelete={() => deleteStudyItem(studyItem.id)}
 				/>
 			))}
-			<button
-				className={styles.addButton}
-				onClick={() => addStudyItem(studyGroupId)}
-			>
-				Create Study Item
-			</button>
+			{studyItems ? (
+				<button
+					className={styles.addButton}
+					onClick={() => addStudyItem(studyGroupId)}
+				>
+					Create Study Item
+				</button>
+			) : null}
 		</div>
 	);
 }

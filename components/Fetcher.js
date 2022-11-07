@@ -1,6 +1,5 @@
-import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react"; //SupaBase user auth
+import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react";
 import * as React from "react";
-import styles from "../styles/StudyGroup.module.css";
 import StudyGroup from "./StudyGroup.js";
 
 export default function Fetcher() {
