@@ -136,3 +136,28 @@ import ClipLoader from "react-spinners/ClipLoader";
 const [spinOpen, setSpinOpen] = React.useState(false);
 <ClipLoader loading={spinOpen} size={35} />
 {spinOpen ? <ClipLoader> : <div>false</div>}
+	//toggle open StudyGroup
+	const toggle = async (studyGroup) => {
+		setSpinOpen(true);
+		try {
+			const { data, error } = await supabase
+				.from("StudyGroups")
+				.update({ is_open: !studyGroup.is_open })
+				.eq("id", studyGroup.id)
+				.select()
+				.single();
+			if (error) {
+				throw new Error(error);
+			}
+			const newStudyGroups = studyGroups.map((obj) => {
+				if (obj.id === studyGroup.id) {
+					return data;
+				}
+				return obj;
+			});
+			setSpinOpen(false);
+			setStudyGroups(newStudyGroups);
+		} catch (error) {
+			console.log("error", error);
+		}
+	};
