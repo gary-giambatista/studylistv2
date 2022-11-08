@@ -1,7 +1,7 @@
 import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react";
+import { LayoutGroup, motion } from "framer-motion";
 import * as React from "react";
 import { DebounceInput } from "react-debounce-input";
-// import { trackPromise, usePromiseTracker } from "react-promise-tracker";
 import styles from "../styles/StudyGroup.module.css";
 import ConfirmDelete from "./ConfirmDelete";
 import StudyItems from "./StudyItems.js";
@@ -79,7 +79,7 @@ export default function StudyGroup({ studyGroups, setStudyGroups }) {
 	};
 
 	return (
-		<div>
+		<LayoutGroup>
 			{studyGroups?.map((studyGroup) => (
 				<div
 					className={
@@ -89,7 +89,20 @@ export default function StudyGroup({ studyGroups, setStudyGroups }) {
 					}
 					key={studyGroup.created_at}
 				>
-					<div className={styles.groupButtonAndInput}>
+					<motion.div
+						layout
+						initial={{
+							opacity: 0,
+						}}
+						animate={{
+							y: [-10, -8, -6, -4, -2, 0],
+							opacity: 1,
+						}}
+						transition={{
+							duration: 0.6,
+						}}
+						className={styles.groupButtonAndInput}
+					>
 						<button
 							className={
 								studyGroup.is_open
@@ -112,10 +125,23 @@ export default function StudyGroup({ studyGroups, setStudyGroups }) {
 								value={studyGroup.group_name}
 							/>
 						</form>
-					</div>
+					</motion.div>
 
 					{studyGroup.is_open ? (
-						<div>
+						<motion.div
+							layout
+							initial={{
+								y: -50,
+								opacity: 0,
+							}}
+							animate={{
+								y: 0,
+								opacity: 1,
+							}}
+							transition={{
+								duration: 0.6,
+							}}
+						>
 							<ConfirmDelete
 								className={styles.testing}
 								buttonText={"Delete Group"}
@@ -126,14 +152,29 @@ export default function StudyGroup({ studyGroups, setStudyGroups }) {
 								studyGroupId={studyGroup.id}
 								onDeleteGroup={() => deleteStudyGroup(studyGroup.id)}
 							/>
-						</div>
+						</motion.div>
 					) : null}
 				</div>
 			))}
-			<hr className={styles.addGroupMarginHR}></hr>
-			<button className={styles.addButton} onClick={addStudyGroup}>
-				Create Study Group
-			</button>
-		</div>
+
+			<motion.div
+				layout
+				initial={{
+					opacity: 0,
+				}}
+				animate={{
+					y: [-10, -8, -6, -4, -2, 0],
+					opacity: 1,
+				}}
+				transition={{
+					duration: 0.6,
+				}}
+			>
+				<hr className={styles.addGroupMarginHR}></hr>
+				<button className={styles.addButton} onClick={addStudyGroup}>
+					Create Study Group
+				</button>
+			</motion.div>
+		</LayoutGroup>
 	);
 }

@@ -1,4 +1,5 @@
 import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react";
+import { LayoutGroup, motion } from "framer-motion";
 import * as React from "react";
 import { DebounceInput } from "react-debounce-input";
 import styles from "../styles/StudyItem.module.css";
@@ -59,8 +60,24 @@ export default function StudyItem({ studyItem, onDelete }) {
 
 	return (
 		<div className={styles.studyBody}>
-			<div className={styles.studyItems} id={`studyGroupNumber${studyItem.id}`}>
-				<div className={styles.studyItemTopContainer}>
+			<LayoutGroup
+				className={styles.studyItems}
+				id={`studyGroupNumber${studyItem.id}`}
+			>
+				<motion.div
+					layout
+					initial={{
+						opacity: 0,
+					}}
+					animate={{
+						opacity: 1,
+						y: [0, 0.2, 0.4, 0.6, 0.8, 1],
+					}}
+					transition={{
+						duration: 0.6,
+					}}
+					className={styles.studyItemTopContainer}
+				>
 					<button
 						onClick={toggle}
 						className={
@@ -81,10 +98,23 @@ export default function StudyItem({ studyItem, onDelete }) {
 							value={itemName}
 						/>
 					</form>
-				</div>
+				</motion.div>
 
 				{isOpen ? (
-					<div>
+					<motion.div
+						layout
+						initial={{
+							opacity: 0,
+						}}
+						animate={{
+							y: [0, 0.2, 0.4, 0.6, 0.8, 1],
+
+							opacity: 1,
+						}}
+						transition={{
+							duration: 0.6,
+						}}
+					>
 						<form
 							className={styles.studyItemBody}
 							onSubmit={(e) => e.preventDefault()}
@@ -124,9 +154,9 @@ export default function StudyItem({ studyItem, onDelete }) {
 							buttonText={"Remove Item"}
 							onDelete={onDelete}
 						/>
-					</div>
+					</motion.div>
 				) : null}
-			</div>
+			</LayoutGroup>
 		</div>
 	);
 }

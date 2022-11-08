@@ -1,4 +1,5 @@
 import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react";
+import { motion } from "framer-motion";
 import * as React from "react";
 import styles from "../styles/StudyItems.module.css";
 import StudyItem from "./StudyItem";
@@ -54,12 +55,26 @@ export default function StudyItems({ studyGroupId }) {
 				/>
 			))}
 			{studyItems ? (
-				<button
-					className={styles.addButton}
-					onClick={() => addStudyItem(studyGroupId)}
+				<motion.div
+					layout
+					initial={{
+						opacity: 0,
+					}}
+					animate={{
+						opacity: 1,
+						y: [0, 0.2, 0.4, 0.6, 0.8, 1],
+					}}
+					transition={{
+						duration: 0.6,
+					}}
 				>
-					Create Study Item
-				</button>
+					<button
+						className={styles.addButton}
+						onClick={() => addStudyItem(studyGroupId)}
+					>
+						Create Study Item
+					</button>
+				</motion.div>
 			) : null}
 		</div>
 	);
