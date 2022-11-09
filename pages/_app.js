@@ -15,10 +15,13 @@ function MyApp({ Component, pageProps }) {
 			<style global jsx>{`
 				body {
 					background: #15202b;
-					max-width: 98.9%;
+				}
+				* {
+					max-width: 100%;
 				}
 			`}</style>
 		</SessionContextProvider>
 	);
 }
 export default MyApp;
+// max-width: 98.9%;

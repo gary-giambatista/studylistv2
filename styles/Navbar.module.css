@@ -8,6 +8,7 @@
 	background: #192734;
 	color: #ffffff;
 	box-shadow: black 0px 1px 3px;
+	width: 97.9%;
 }
 .loggedInUser {
 	list-style: none;
@@ -34,4 +35,10 @@
 
 .signOut:hover {
 	background-color: #1da1f2;
+}
+
+@media (max-width: 540px) {
+	.navbar {
+		height: 60px;
+	}
 }

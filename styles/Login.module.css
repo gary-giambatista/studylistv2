@@ -1,5 +1,8 @@
 /* .allRenderedComps {
-
+	max-width: 100%;
+}
+.header {
+	max-width: 100%;
 } */
 
 .loginContainer {
@@ -31,4 +34,6 @@
 	border: 4px solid #ffffff !important;
 	box-shadow: black 0px 5px 5px;
 	border-radius: 5px;
+}
+.wrapper {
 }

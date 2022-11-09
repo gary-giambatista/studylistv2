@@ -16,14 +16,10 @@ export default function Home() {
 	const supabase = useSupabaseClient();
 
 	return (
-		<div
-			className={styles.allRenderedComps}
-			//style={{ padding: "50px 0 100px 0" }}
-		>
-			<header>
+		<div className={styles.allRenderedComps}>
+			<header className={styles.header}>
 				<Navbar />
 			</header>
-			{/* <h1> Create your own modular study list</h1> */}
 			{!session ? (
 				<div className={styles.loginContainer}>
 					<h1 className={styles.title}> Create your own modular study list</h1>
@@ -56,7 +52,7 @@ export default function Home() {
 				</div>
 			) : (
 				<div session={session}>
-					<section>
+					<section className={styles.wrapper}>
 						<Fetcher />
 					</section>
 				</div>

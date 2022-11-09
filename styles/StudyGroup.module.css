@@ -2,6 +2,7 @@
 	display: flex;
 	margin-left: 30px;
 	margin-top: 30px;
+	max-width: 100%;
 }
 .toggleOpenButton {
 	margin-right: 10px;
