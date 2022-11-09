@@ -56,7 +56,7 @@ export default function Home() {
 				</div>
 			) : (
 				<div session={session}>
-					<section>
+					<section className={styles.wrapper}>
 						<Fetcher />
 					</section>
 				</div>

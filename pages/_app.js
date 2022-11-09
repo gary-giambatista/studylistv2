@@ -15,7 +15,9 @@ function MyApp({ Component, pageProps }) {
 			<style global jsx>{`
 				body {
 					background: #15202b;
-					max-width: 98.9%;
+					margin: 0;
+					display: inline-block;
+					width: 100%;
 				}
 			`}</style>
 		</SessionContextProvider>

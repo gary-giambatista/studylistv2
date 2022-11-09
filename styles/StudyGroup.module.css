@@ -1,7 +1,8 @@
 .groupButtonAndInput {
 	display: flex;
-	margin-left: 30px;
-	margin-top: 30px;
+	margin: 36px 12px 0;
+	flex-direction: row;
+	justify-content: flex-start;
 }
 .toggleOpenButton {
 	margin-right: 10px;
