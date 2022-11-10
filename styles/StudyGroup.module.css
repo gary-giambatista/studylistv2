@@ -1,0 +1,72 @@
+.groupButtonAndInput {
+	display: flex;
+	margin-left: 30px;
+	margin-top: 30px;
+	max-width: 100%;
+}
+.toggleOpenButton {
+	margin-right: 10px;
+	font-size: 16px;
+	width: 150px;
+
+	background-color: #bfbfbf;
+	border-color: #192734;
+
+	border-radius: 8px;
+	border-width: 3px;
+	color: black;
+	transition: all 0.3s ease 0s;
+	cursor: pointer;
+}
+.toggleOpenButton:hover {
+	background-color: #1da1f2;
+	border-color: #192734;
+}
+.toggleCloseButton {
+	margin-right: 10px;
+	font-size: 16px;
+	width: 150px;
+	border-radius: 8px;
+	background-color: #22303c;
+	color: #ffffff;
+	border-color: #192734;
+	transition: all 0.3s ease 0s;
+	cursor: pointer;
+}
+.toggleCloseButton:hover {
+	background-color: #1da1f2;
+	border-color: #8899a6;
+}
+
+.groupName {
+	color: #ffffff;
+	padding-left: 5px;
+	height: 32px;
+	background: transparent;
+	border: none;
+	width: 500px;
+	fill: none;
+	font-size: 16px;
+	border-bottom: 1px solid #8899a6;
+}
+.addGroupMarginHR {
+	margin: 30px;
+}
+.addButton {
+	padding: 10px;
+	margin-left: 30px;
+	font-size: 18px;
+	color: #ffffff !important;
+	background-color: #1da1f2;
+	border-color: #22303c;
+	border-width: 3px;
+	color: black;
+	border-radius: 8px;
+	transition: all 0.3s ease 0s;
+	cursor: pointer;
+}
+
+.addButton:hover {
+	background-color: #22303c;
+	border-color: #1da1f2;
+}
