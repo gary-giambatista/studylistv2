@@ -17,8 +17,6 @@
 	align-items: center;
 	gap: 30px;
 }
-.userName {
-}
 
 .signOut {
 	cursor: pointer;
@@ -37,7 +35,7 @@
 	background-color: #1da1f2;
 }
 
-@media (max-width: 540px) {
+@media screen and (max-width: 540px) {
 	.navbar {
 		height: 60px;
 	}
