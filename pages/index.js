@@ -7,7 +7,7 @@ import Footer from "../components/Footer.js";
 import styles from "../styles/Login.module.css";
 
 import Fetcher from "../components/Fetcher.js";
-import Navbar from "../Components/Navbar";
+import Navbar from "../Components/Navbar.js";
 import StudyListPicture from "../public/StudyListSamp.JPG";
 
 export default function Home() {
