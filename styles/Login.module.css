@@ -1,3 +1,7 @@
+.allRenderedComps {
+	position: relative;
+}
+
 .loginContainer {
 	color: #ffffff;
 	margin: 30px;

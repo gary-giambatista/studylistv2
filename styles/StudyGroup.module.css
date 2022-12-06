@@ -70,3 +70,17 @@
 	background-color: #22303c;
 	border-color: #1da1f2;
 }
+
+@media screen and (max-width: 705px) {
+	.groupName {
+		width: auto;
+	}
+	.toggleOpenButton {
+		font-size: 12px;
+		width: 100px;
+	}
+	.toggleCloseButton {
+		font-size: 12px;
+		width: 100px;
+	}
+}

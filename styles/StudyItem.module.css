@@ -97,3 +97,17 @@
 	border-left: transparent;
 	border-right: transparent;
 }
+
+@media screen and (max-width: 705px) {
+	.groupName {
+		width: auto;
+	}
+	.toggleOpenButton {
+		font-size: 12px;
+		width: 100px;
+	}
+	.toggleCloseButton {
+		font-size: 12px;
+		width: 100px;
+	}
+}

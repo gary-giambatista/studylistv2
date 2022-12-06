@@ -44,6 +44,7 @@ export default function Home() {
 					</h3>
 					<div className={styles.auth}>
 						<Auth
+							providers={["google"]}
 							supabaseClient={supabase}
 							appearance={{ theme: ThemeSupa }}
 							theme="dark"
@@ -51,9 +52,9 @@ export default function Home() {
 					</div>
 				</div>
 			) : (
-				<div session={session}>
+				<div>
 					<section className={styles.wrapper}>
-						<Fetcher />
+						<Fetcher session={session} />
 					</section>
 				</div>
 			)}
