@@ -2,7 +2,6 @@
 	display: flex;
 	margin-left: 30px;
 	margin-top: 30px;
-	max-width: 100%;
 }
 .toggleOpenButton {
 	margin-right: 10px;
@@ -71,7 +70,12 @@
 	border-color: #1da1f2;
 }
 
-@media screen and (max-width: 705px) {
+@media screen and (max-width: 795px) {
+	.groupButtonAndInput {
+		margin-left: 10px;
+		margin-top: 10px;
+		margin-top: 15px;
+	}
 	.groupName {
 		width: auto;
 	}

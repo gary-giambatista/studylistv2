@@ -2,6 +2,13 @@
 	position: relative;
 }
 
+.relativeWrapper {
+	position: relative;
+}
+.wrapper {
+	position: relative;
+}
+
 .loginContainer {
 	color: #ffffff;
 	margin: 30px;

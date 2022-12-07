@@ -1,5 +1,5 @@
 import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react";
-import { motion } from "framer-motion";
+import { LayoutGroup, motion } from "framer-motion";
 import * as React from "react";
 import styles from "../styles/StudyItems.module.css";
 import StudyItem from "./StudyItem";

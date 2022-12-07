@@ -24,4 +24,3 @@ function MyApp({ Component, pageProps }) {
 	);
 }
 export default MyApp;
-// max-width: 98.9%;

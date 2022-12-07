@@ -6,6 +6,7 @@ import * as React from "react";
 import Footer from "../components/Footer.js";
 import styles from "../styles/Login.module.css";
 
+import { LayoutGroup, motion } from "framer-motion";
 import Fetcher from "../components/Fetcher.js";
 import Navbar from "../components/Navbar.js";
 import StudyListPicture from "../public/StudyListSamp.JPG";
@@ -52,7 +53,7 @@ export default function Home() {
 					</div>
 				</div>
 			) : (
-				<div>
+				<div className={styles.relativeWrapper}>
 					<section className={styles.wrapper}>
 						<Fetcher session={session} />
 					</section>

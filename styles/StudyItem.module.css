@@ -78,7 +78,7 @@
 	display: flex;
 }
 .urlOpenButton {
-	height: 35px;
+	height: 33px;
 	width: 75px;
 	color: #8899a6;
 	background-color: transparent;
@@ -98,16 +98,37 @@
 	border-right: transparent;
 }
 
-@media screen and (max-width: 705px) {
-	.groupName {
+@media screen and (max-width: 795px) {
+	.studyBody {
+		margin-left: 10px;
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+	.studyItemBody {
+		margin: 0;
+	}
+	.studyItemName {
 		width: auto;
+	}
+	.groupLink {
+		width: auto;
+		margin-top: 15px;
+	}
+	.urlOpenButton {
+		margin-top: 15px;
+	}
+	.groupDesc {
+		width: 300px;
+		margin-top: 10px;
 	}
 	.toggleOpenButton {
 		font-size: 12px;
-		width: 100px;
+		width: 45px;
+		padding: 3px;
 	}
 	.toggleCloseButton {
 		font-size: 12px;
-		width: 100px;
+		width: 45px;
+		padding: 3px;
 	}
 }

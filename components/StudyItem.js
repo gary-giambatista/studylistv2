@@ -151,7 +151,7 @@ export default function StudyItem({ studyItem, onDelete }) {
 						</form>
 						<ConfirmDelete
 							className={styles.testing}
-							buttonText={"Remove Item"}
+							buttonText={"Delete Item"}
 							onDelete={onDelete}
 						/>
 					</motion.div>
