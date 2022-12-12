@@ -27,7 +27,7 @@
 }
 .topExplaination {
 	margin-bottom: 30px;
-	padding-top: 10px;
+	padding-top: 15px;
 }
 .explaination {
 	border-bottom: 3px solid #192734;
@@ -50,8 +50,8 @@
 		padding: 0px 0px 22px 0px;
 	}
 	.topExplaination {
-		margin-top: 20px;
 		font-size: 15px;
+		margin-bottom: 25px;
 	}
 	.explaination {
 		padding: 0px 0px 22px 0px;
